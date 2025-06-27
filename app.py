@@ -52,6 +52,8 @@ if uploaded_files:
                 all_skipped.append(line)
             for mismatch in mismatched:
                 all_mismatched.append(mismatch)
+    if "Ship To" in df.columns:
+        df = df.drop(columns=["Ship To"])
 
     final_df = pd.concat(all_df, ignore_index=True)
     final_summary = pd.concat(all_summary, ignore_index=True) if all_summary else None
