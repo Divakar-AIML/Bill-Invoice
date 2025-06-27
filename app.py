@@ -44,7 +44,6 @@ if uploaded_files:
                 summary["Invoice Number"] = metadata.get("invoice_number", "")
                 summary["Quote Date"] = metadata.get("quote_date", "")
                 summary["Sold To"] = metadata.get("sold_to", "")
-                summary["Ship To"] = metadata.get("ship_to", "")
                 summary = summary[["Invoice Number", "Quote Date", "Sold To", "Ship To", "Section", "Total Price"]]
                 all_summary.append(summary)
 
@@ -56,7 +55,7 @@ if uploaded_files:
 
     final_df = pd.concat(all_df, ignore_index=True)
     final_summary = pd.concat(all_summary, ignore_index=True) if all_summary else None
-    
+
     if "Ship To" in df.columns:
         df = df.drop(columns=["Ship To"])
 
