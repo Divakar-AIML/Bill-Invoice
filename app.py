@@ -54,6 +54,8 @@ if uploaded_files:
     
 
     final_df = pd.concat(all_df, ignore_index=True)
+    if "Ship To" in final_df.columns:
+        final_df = final_df.drop(columns=["Ship To"])
     final_summary = pd.concat(all_summary, ignore_index=True) if all_summary else None
 
     if "Ship To" in df.columns:

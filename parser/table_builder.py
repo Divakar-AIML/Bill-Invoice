@@ -28,8 +28,8 @@ def build_table_from_lines(lines, metadata):
             # Add metadata fields
             result["Invoice Number"] = metadata.get("invoice_number", "UNKNOWN")
             result["Quote Date"] = metadata.get("quote_date", "UNKNOWN")
+            result["Invoice Number"] = metadata.get("invoice_number", "UNKNOWN")
             result["Sold To"] = metadata.get("sold_to", "UNKNOWN")
-            result["Ship To"] = metadata.get("ship_to", "UNKNOWN")
 
             # Validate total = quantity × unit price
             expected = round(result["Quantity"] * result["Unit Price"], 2)
