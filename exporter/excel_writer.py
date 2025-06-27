@@ -30,6 +30,7 @@ def write_excel(invoice_df, summary_df=None, skipped_lines=None, mismatched_line
     # Write InvoiceItems
     for row in dataframe_to_rows(invoice_df, index=False, header=True):
         ws1.append(row)
+        print("🧾 Final columns:", df.columns.tolist())
 
     # Bold headers
     for cell in ws1[1]:
