@@ -21,11 +21,17 @@ def parse_product_line(line_text, section):
     unit_price = float(match.group(4))
     total_price = float(match.group(5))
 
-    return {
+    packet_qty_match = re.search(r'\((\d{1,4})\)$', description)
+    packet_qty = int(packet_qty_match.group(1)) if packet_qty_match else None
+
+    result = {
         "Section": section or "Unknown",
         "Quantity": quantity,
         "Product Code": product_code,
         "Description": description,
+        "Packet Quantity": packet_qty,
         "Unit Price": unit_price,
-        "Total Price": total_price
+        "Total Price": total_price,
+        "Unit Price Per Item": round(unit_price / packet_qty, 2) if packet_qty else None
     }
+    return result
